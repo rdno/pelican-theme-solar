@@ -1,0 +1,49 @@
+<div id="bottombar">
+  <div class="social">
+      <strong>Social:</strong>
+      <ul>
+	{% if SOCIAL %}
+	{% for name, link in SOCIAL %}
+	<li><a href="{{ link }}"><i class="icon-{{ name }}-sign"></i>{{ name }}</a></li>
+	{% endfor %}
+	{% endif %}
+      </ul>
+  </div>
+  {% if LINKS %}
+  <div class="links">
+      <span class="title"><strong>Links:</strong></span>
+      <ul>
+	{% for name, link in LINKS %}
+	<li><a href="{{ link }}"><i class="icon-external-link"></i>
+	    {{ name }}
+	</a></li>
+	{% endfor %}
+      </ul>
+  </div>
+  {% endif %}
+  <div class="clear"></div>
+  <div class="categories">
+    <strong>Categories:</strong>
+    <ul>
+      {% for cat, null in categories %}
+      <li>
+	<a href="{{ SITEURL }}/{{ cat.url }}">
+	  <i class="icon-folder-open"></i>
+	  {{ cat }}
+      </a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="tags">
+    <strong>Tags:</strong>
+    <ul>
+      {% for tag in tag_cloud %}
+      <li class="tag-{{ tag.1 }}">
+	<a href="{{ SITEURL }}/{{ tag.0.url }}">
+          <i class="icon-tag"></i>{{ tag.0 }}
+	</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

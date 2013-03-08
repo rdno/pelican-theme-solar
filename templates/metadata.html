@@ -1,0 +1,31 @@
+<footer class="post-info">
+  <i class="icon-calendar"></i>
+  <time title="{{ article.date.isoformat() }}" class="published" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+  {% if article.category %}
+  &nbsp;<i class="icon-folder-close"></i>
+  <a class="category"
+     title="in category {{ article.category }}"
+     href="{{SITEURL}}/{{ article.category.url }}">
+    {{article.category}}
+  </a>
+  {% endif %}
+  {% if article.tags %}
+  &nbsp;<i class="icon-tags"></i>
+  {% for tag in article.tags %}
+  <a class="tag"
+     title="tagged {{ tag }}"
+     href="{{ SITEURL }}/{{ tag.url }}">{{tag}}</a>
+  {% endfor %}
+  {% endif %}
+  {% if article.translations %}
+  {% for translation in article.translations %}
+  <a class="lang"
+     title="also available in {{ translation.lang }}" href="{{ SITEURL }}/{{ translation.url }}"><i class="icon-flag"></i> {{ translation.lang }}</a>
+  {% endfor %}
+  {% endif %}
+  {% if not HIDE_AUTHOR %}
+    {% if article.author %}<address class="vcard author">
+    <i class="icon-user"></i>
+    <a class="url fn" href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a></address>{% endif %}
+  {% endif %}
+</footer>

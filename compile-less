@@ -1,0 +1,2 @@
+#!/bin/sh
+lessc -x static/less/main.less > static/css/main.css

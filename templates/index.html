@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content">
+{% block content_title %}
+
+{% endblock %}
+
+<div id="post-list">
+{% for article in articles_page.object_list %}
+<article class="hentry">
+  <header>
+    <h2 class="entry-title">
+      <a href="{{ SITEURL }}/{{ article.url }}"
+	 rel="bookmark"
+	 title="Permalink to {{ article.title|striptags }}">
+	{{ article.title }}</a></h2>
+  </header>
+  {% include 'metadata.html' %}
+  <div class="entry-content"> {{ article.summary }} </div><!-- /.entry-content -->
+  <a class="more" href="{{ SITEURL }}/{{ article.url }}" title="read more">read more…</a>
+</article>
+{% endfor %}
+</div><!-- /#posts-list -->
+{% include 'pagination.html' %}
+</section><!-- /#content -->
+{% include 'bottombar.html' %}
+{% endblock content %}

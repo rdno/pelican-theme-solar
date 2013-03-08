@@ -1,0 +1,9 @@
+<ul>
+  {% for tag in tag_cloud %}
+  <li class="tag-{{ tag.1 }}">
+    <a href="{{ SITEURL }}/{{ tag.0.url }}">
+      <i class="icon-tag"></i>{{ tag.0 }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
